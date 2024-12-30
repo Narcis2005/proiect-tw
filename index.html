@@ -14,144 +14,201 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/resurse/ico/apple-touch-icon.png">
     <link rel="manifest" href="/resurse/ico/site.webmanifest">
     <meta name="msapplication-TileImage" content="resurse/ico/mstile-150x150.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   </head>
 
   <body>
-
-    <header>
-      <h1>Book Heaven</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">Acasă</a>
-            <ul>
-              <li><a href="#genres">Genuri</a></li>
-              <li><a href="#featured">Recomandate</a></li>
-            </ul>
-          </li>
-          <li><a href="#catalog">Catalog</a></li>
-          <li><a href="#about">Despre Noi</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <section id="home">
-        <h2>Bun venit la Book Heaven</h2>
-        <p>Descoperă o <b>colecție impresionantă</b> de cărți din diverse genuri, de la <i>romane de ficțiune</i> până
-          la <em>literatură clasică.</em></p>
-
-        <figure>
-          <picture>
-            <source media="(max-width: 600px)" srcset="resurse/poze/books-200.jpg">
-            <source media="(max-width: 1200px)" srcset="resurse/poze/books-400.jpg">
-            <img src="resurse/poze/books-640.jpg" alt="Biblioteca">
-          </picture>
-          <figcaption>O colecție de cărți fascinante, disponibile pentru toți pasionații de lectură.</figcaption>
-        </figure>
-      </section>
-
-      <section id="genres">
-        <h2>Genuri populare</h2>
-        <article>
-          <h3>Romane de ficțiune</h3>
-          <p>Explorează o serie de <b>romane captivante</b>, incluzând opere ale <i>autorilor contemporani</i> și
-            clasici.</p>
+    <div class="main-container">
+      <header>
+        <h1>Book Heaven</h1>
+        <nav>
           <ul>
-            <li><b>Aventură</b></li>
-            <li>Mister</li>
-            <li>Fantezie</li>
-            <li>Romantism</li>
+            <li><a href="#home">Acasă</a>
+              <ul>
+                <li><a href="#genres">Genuri</a></li>
+                <li><a href="#featured">Recomandate</a></li>
+              </ul>
+            </li>
+            <li><a href="#catalog">Catalog</a></li>
+            <li><a href="#about">Despre Noi</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
-        </article>
+        </nav>
+      </header>
 
-        <article>
-          <h3>Literatură clasică</h3>
-          <p>Redescoperă <b>capodoperele literare</b> care au definit cultura literară.</p>
-          <ol>
-            <li>Război și Pace</li>
-            <li>Mândrie și Prejudecată</li>
-            <li>Marele Gatsby</li>
-          </ol>
-        </article>
-      </section>
+      <main  class="grid-container">
+        <section id="home" class="single-column">
+          <h2>Bun venit la Book Heaven</h2>
+          <p>Descoperă o <b>colecție impresionantă</b> de cărți din diverse genuri, de la <i>romane de ficțiune</i> până
+            la <em>literatură clasică.</em></p>
 
-      <aside>
-        <h2>Linkuri utile</h2>
-        <details>
-          <summary>Întrebări frecvente</summary>
-          <p>Aflați răspunsuri la întrebările comune legate de achiziționarea și livrarea cărților.</p>
-        </details>
-        <details>
-          <summary>Oferte speciale</summary>
-          <p>Descoperiți reducerile și promoțiile săptămânale la cărțile noastre recomandate.</p>
-        </details>
-      </aside>
+          <figure>
+            <picture>
+              <source media="(max-width: 600px)" srcset="resurse/poze/books-200.jpg">
+              <source media="(max-width: 1200px)" srcset="resurse/poze/books-400.jpg">
+              <img src="resurse/poze/books-640.jpg" alt="Biblioteca">
+            </picture>
+            <figcaption>O colecție de cărți fascinante, disponibile pentru toți pasionații de lectură.</figcaption>
+          </figure>
+        </section>
+        <div class="two-columns">
+          <section id="genres">
+            <h2>Genuri populare <span class="fas fa-virus fa-fw fa-spin"></span></h2>
+            <article>
+              <h3>Romane de ficțiune</h3>
+              <p>Explorează o serie de <b>romane captivante</b>, incluzând opere ale <i>autorilor contemporani</i> și
+                clasici.</p>
+              <ul>
+                <li><b>Aventură</b></li>
+                <li>Mister</li>
+                <li>Fantezie</li>
+                <li>Romantism</li>
+              </ul>
+            </article>
 
-      <section id="featured">
-        <h2><b>Recomandări speciale de cărți</b></h2>
-        <p>Răsfoiți cele mai <b>populare cărți</b> recomandate de comunitatea noastră.</p>
-        <a href="https://carturesti.ro/" target="_blank">Vizitați magazinul nostru online</a>
-      </section>
+            <article>
+              <h3>Literatură clasică</h3>
+              <p>Redescoperă <b>capodoperele literare</b> care au definit cultura literară.</p>
+              <ol>
+                <li>Război și Pace</li>
+                <li>Mândrie și Prejudecată</li>
+                <li>Marele Gatsby</li>
+              </ol>
+            </article>
+          </section>
 
-      <section id="catalog">
-        <h2><b>Catalog de cărți</b></h2>
-        <p>Răsfoiți catalogul nostru variat de <abbr title="romane grafice">RG</abbr> și alte tipuri de literatură.</p>
-      </section>
+          <div>
+            <aside>
+              <h2>Linkuri utile</h2>
+              <details>
+                <summary>Întrebări frecvente</summary>
+                <p>Aflați răspunsuri la întrebările comune legate de achiziționarea și livrarea cărților.</p>
+              </details>
+              <details>
+                <summary>Oferte speciale</summary>
+                <p>Descoperiți reducerile și promoțiile săptămânale la cărțile noastre recomandate.</p>
+              </details>
+            </aside>
 
-      <section>
-        <h2>Calculul timpului de citit</h2>
-        <p>Ai vreodată curiozitatea de a ști câte pagini poți citi într-un anumit timp? Folosește următoarea formulă
-          pentru a calcula numărul de pagini pe care le poți citi în funcție de viteza ta de citire:</p>
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <mrow>
-            <mi>P</mi>
-            <mo>=</mo>
-            <mfrac>
+            <section id="featured">
+              <h2><b>Recomandări speciale de cărți</b></h2>
+              <p>Răsfoiți cele mai <b>populare cărți</b> recomandate de comunitatea noastră.</p>
+              <a href="https://carturesti.ro/" target="_blank">Vizitați magazinul nostru online</a>
+            </section>
+          </div>
+        </div>
+        <div class="three-columns">
+        <section id="catalog">
+          <h2><b>Catalog de cărți</b></h2>
+          <p>Răsfoiți catalogul nostru variat de <abbr title="romane grafice">RG</abbr> și alte tipuri de literatură.</p>
+        </section>
+
+        <section>
+          <h2>Calculul timpului de citit</h2>
+          <p>Ai vreodată curiozitatea de a ști câte pagini poți citi într-un anumit timp? Folosește următoarea formulă
+            pentru a calcula numărul de pagini pe care le poți citi în funcție de viteza ta de citire:</p>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mrow>
+              <mi>P</mi>
+              <mo>=</mo>
+              <mfrac>
+                <mi>V</mi>
+                <mi>T</mi>
+              </mfrac>
+            </mrow>
+            <mtext>, unde, </mtext>
+            <mrow>
+              <mi>P</mi>
+              <mo>=</mo>
+              <mtext> numărul de pagini citite, </mtext>
+            </mrow>
+            <mrow>
               <mi>V</mi>
+              <mo>=</mo>
+              <mtext> viteza de citire (pagini pe oră), </mtext>
+            </mrow>
+            <mrow>
               <mi>T</mi>
-            </mfrac>
-          </mrow>
-          <mtext>, unde, </mtext>
-          <mrow>
-            <mi>P</mi>
-            <mo>=</mo>
-            <mtext> numărul de pagini citite, </mtext>
-          </mrow>
-          <mrow>
-            <mi>V</mi>
-            <mo>=</mo>
-            <mtext> viteza de citire (pagini pe oră), </mtext>
-          </mrow>
-          <mrow>
-            <mi>T</mi>
-            <mo>=</mo>
-            <mtext> timpul petrecut citind (în ore). </mtext>
-          </mrow>
-        </math>
-        <p>Introdu valorile în formulă pentru a vedea câte pagini poți citi într-o oră!</p>
-      </section>
+              <mo>=</mo>
+              <mtext> timpul petrecut citind (în ore). </mtext>
+            </mrow>
+          </math>
+          <p>Introdu valorile în formulă pentru a vedea câte pagini poți citi într-o oră!</p>
+        </section>
 
-      <div class="taburi-iframe">
-        <a href="https://www.youtube.com/embed/gHVl9_9P4H4" target="ifr-video">Turnul Intunecat</a>
-        <a href="https://www.youtube.com/embed/W4gi8BCtg0A" target="ifr-video">Trilogia Grisha</a>
+        <div>
+          <div class="taburi-iframe">
+            <a href="https://www.youtube.com/embed/gHVl9_9P4H4" target="ifr-video">Turnul Intunecat</a>
+            <a href="https://www.youtube.com/embed/W4gi8BCtg0A" target="ifr-video">Trilogia Grisha</a>
+          </div>
+          <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/gHVl9_9P4H4"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
       </div>
-      <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/gHVl9_9P4H4"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-    </main>
+        <div class="table-container">
+          <table id="stilizare-tabel">
+            <thead>
+              <tr>
+                <th>Oferta</th>
+                <th>Preț</th>
+                <th>Perioadă</th>
+                <th>Disponibilitate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Oferta 1</td>
+                <td>100 Lei</td>
+                <td>1 Ianuarie - 31 Martie</td>
+                <td>Disponibil</td>
+              </tr>
+              <tr>
+                <td>Oferta 2</td>
+                <td>150 Lei</td>
+                <td>1 Aprilie - 30 Iunie</td>
+                <td rowspan="2">Epuizat</td>
+              </tr>
+              <tr>
+                <td>Oferta 3</td>
+                <td>120 Lei</td>
+                <td>1 Iulie - 30 Septembrie</td>
+              </tr>
+              <tr>
+                <td>Oferta 4</td>
+                <td>200 Lei</td>
+                <td>1 Octombrie - 31 Decembrie</td>
+                <td>Disponibil</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4" style="text-align: center;">Ofertă valabilă în limita stocului</td>
+              </tr>
+            </tfoot>
+          </table>
+          <caption>Ofertele noastre pentru anul 2024</caption>
+        </div>
+        
+      </main>
 
-    <footer>
-      <address>
-        Telefon: <a href="tel:+40123456789">+40 123 456 789</a><br>
-        Adresa: <a href="https://maps.app.goo.gl/WDa8geo8AB5wG9Wd7">Strada Academiei 14, București</a><br>
-        E-mail: <a href="mailto:info@bookheaven.com">info@bookheaven.com</a><br>
-        Chat: <a href="https://wa.me/40123456789">WhatsApp</a>
-      </address>
-      <small>&copy; <time datetime="2024">2024</time> Book Heaven. Toate drepturile rezervate.</small>
-      <p><a href="#home">Înapoi la începutul paginii</a></p>
-      <p><a href="resurse/files/cei-3-purcelusi.pdf.pdf" download>Descarcă cei 3 purcelusi</a></p>
-    </footer>
+      <footer>
+        <address>
+          Telefon: <a href="tel:+40123456789">+40 123 456 789</a><br>
+          Adresa: <a href="https://maps.app.goo.gl/WDa8geo8AB5wG9Wd7">Strada Academiei 14, București</a><br>
+          E-mail: <a href="mailto:info@bookheaven.com">info@bookheaven.com</a><br>
+          Chat: <a href="https://wa.me/40123456789">WhatsApp</a>
+        </address>
+        <small>&copy; <time datetime="2024">2024</time> Book Heaven. Toate drepturile rezervate.</small>
+        <p><a href="#home">Înapoi la începutul paginii</a></p>
+        <p><a href="resurse/files/cei-3-purcelusi.pdf.pdf" download>Descarcă cei 3 purcelusi <i class="fa-solid fa-download"></i></a></p>
+      </footer>
+    </div>
+    <a href="#" id="link-top" title="Scroll to top page"><div id="triunghi"></div></a>
   </body>
 
 </html>

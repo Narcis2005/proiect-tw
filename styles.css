@@ -1,0 +1,251 @@
+* {
+  font-family: "Roboto", serif;
+
+}
+html {
+  font-size: var(--font-size-small);
+  transition: font-size 0.3s ease;
+}
+:root {
+  --background-color: #F4E3C1;
+  --text-color: #50372E;
+  --border-color: #8C6B4A;
+  --highlight-color: #D9C1A3;
+  --accent-color: #A67C52;
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 18px;
+  --page-padding: 1rem;
+  --grid-gap: 1rem;
+} 
+@media (min-width: 600px) {
+  html {
+    font-size: var(--font-size-medium);
+  }
+  :root {
+    --page-padding: 2rem;
+    --grid-gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: var(--font-size-large);
+  }
+  :root {
+    --page-padding: 3rem;
+    --grid-gap: 2rem;
+  }
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 1fr;
+  grid-gap: var(--grid-gap);
+
+}
+
+header {
+  background-color: var(--text-color);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  grid-row: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.single-column {
+  background-color: var(--highlight-color);
+  padding: 20px;
+  text-align: center;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background-color: var(--accent-color);
+  padding: 20px;
+}
+
+.two-columns .column-2 {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: var(--border-color);
+  padding: 20px;
+}
+
+footer {
+  background-color: var(--text-color);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  grid-row: 6;
+}
+header h1 {
+  font-size: 2rem;
+}
+
+nav ul li a {
+  font-size: 1rem;
+}
+
+main p, main math {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+main math {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer address, footer small {
+  font-size: 0.875rem;
+}
+.grid-container > section,  .grid-container > div{
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+footer, header {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 5px;
+
+}
+#home img {
+  width: 100%;
+  min-width: 200px;
+  max-width: 1000px;  
+}
+
+/* Container cu scroll orizontal pe dispozitive mici */
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+/* Stilizare tabel */
+#stilizare-tabel {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#stilizare-tabel thead {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+
+#stilizare-tabel th,
+#stilizare-tabel td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+/* Coloane cu background alternat */
+#stilizare-tabel tr:nth-child(even) td:nth-child(odd),
+#stilizare-tabel tr:nth-child(odd) td:nth-child(even) {
+  background: var(--highlight-color);
+}
+
+/* Efect de schimbare a fundalului la hover pe rând */
+#stilizare-tabel tr {
+  transition: background-color 0.3s ease;
+}
+
+#stilizare-tabel tr:hover td {
+  background-color:  var(--border-color) !important;
+}
+
+#stilizare-tabel tr td:hover {
+  background-color: var(--accent-color)  !important;
+}
+
+/* Stilizare caption plasat sub tabel */
+#stilizare-tabel caption {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* Răspuns la dimensiuni mici ale ecranului */
+@media (max-width: 768px) {
+  #stilizare-tabel {
+    font-size: 14px;
+  }
+}
+
+.taburi-iframe a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--accent-color); /* Button color */
+  color: var(--background-color); /* Text color */
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 2px solid var(--border-color);
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  margin: 0;
+}
+
+/* Hover effect for the buttons */
+.taburi-iframe a:hover {
+  background-color: var(--highlight-color);
+  transform: scale(1.05);
+}
+
+.taburi-iframe a:active {
+  background-color: var(--border-color);
+  transform: scale(0.98); 
+}
+#link-top{
+  position:fixed;
+  bottom:0.3em;
+  opacity:0.5;
+  left:0.3em;
+  width:3rem;
+  box-sizing: border-box;
+  height:3rem;
+  line-height:3rem;
+  text-align:center;
+  border:5px solid var(--border-color);
+	border-top-color:var(--highlight-color);
+  border-radius:50%;
+  background: var(--background-color);
+}
+#link-top:hover{
+  opacity:1;
+}
+#triunghi{
+  height:0px;
+  width:0;
+  display:inline-block;
+  border-bottom:1.5rem solid var(--accent-color  );
+  border-left:1rem solid transparent;
+  border-right:1rem solid transparent;
+  vertical-align: top;
+  transform: translateY(30%);
+}
+   
