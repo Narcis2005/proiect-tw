@@ -1,0 +1,136 @@
+$primary-color: #8C6B4A;
+$secondary-color: #f8f9fa;
+$hover-color: #A67C52;
+$text-color: #50372E;
+.main-nav {
+  .menu {
+    display: flex;
+    justify-content: flex-start;
+    // justify-content: space-between;
+    padding: 0;
+    li {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      // display: block;
+      list-style: none;
+      background-color: $primary-color;
+      padding: 10px;
+      border: 1px solid $text-color;
+      transition: all 1s ease;
+      @media (max-width: 600px) { 
+        padding: 10px 0;
+      }
+      &:hover {
+        background-color:$hover-color ;
+        > a {
+          padding-bottom: 10px;
+        }
+        padding-bottom: 0;
+      }
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: white;
+      text-decoration: none;
+      height: auto;
+      transition: all 1s ease;
+    }
+    a:hover + .submenu, .submenu:hover {
+      height: 110px;
+      opacity: 1;
+      a {
+        height: 30px;
+        &:hover {
+          text-decoration: underline solid white;
+          background-color: #50372E;
+        }
+      }
+      @media (max-width: 600px) { 
+        height: auto;
+      }
+    }
+    .submenu {
+      position: absolute;
+      top: 40px;
+      width: auto;
+      left: 0;
+      padding: 0;
+      height: 0;
+      opacity: 0;
+      transition: all 1s ease;
+      li {
+        padding: 0;
+        position: relative;
+        height: auto;
+      }
+      a {
+        text-decoration: underline solid transparent;
+        transition: text-decoration 1s ease;
+        height: 0px;
+        background-color: $hover-color;
+        transition: all 1s ease;
+        white-space: nowrap;
+        padding: 5px;
+        @media (max-width: 600px) { 
+          padding: 5px 0;
+        }
+      }
+      @media (max-width: 600px) { 
+        position: relative;
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        top: 0;
+      }
+    }
+    .menu-item{
+      position: relative;
+    }
+    @media (max-width: 600px) { 
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 70vw;
+      top: 0;
+      height: 100%;
+      margin-top: 0;
+      background-color: $primary-color;
+      left: 0;
+      transform: translateX(-70vw);
+      transition: transform 1s ease;
+      &.open {
+        transform: none;
+      }
+    }
+  }
+
+  .tablet-item {
+    display: none;
+    @media (max-width: 1200px) { 
+      display: block;
+    } 
+  }
+  .desktop-item {
+    display: block;
+    @media (max-width: 1200px) { 
+      display: none;
+    } 
+  }
+
+}
+.burger {
+  display: none;
+  @media (max-width: 600px) { 
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 3rem;
+    color: white;
+    margin: 20px;
+  }
+}
