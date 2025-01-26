@@ -1,0 +1,24 @@
+{
+  "name": "proiect-tw",
+  "version": "1.0.0",
+  "description": "Magazin de vanzari carti",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Narcis2005/proiect-tw.git"
+  },
+  "author": "Chirilov Narcis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Narcis2005/proiect-tw/issues"
+  },
+  "homepage": "https://github.com/Narcis2005/proiect-tw#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}

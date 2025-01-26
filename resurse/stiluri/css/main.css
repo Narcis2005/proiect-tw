@@ -142,4 +142,15 @@
   }
 }
 
+.eroare-container {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+.eroare-container img {
+  margin-left: 37.5%;
+  width: 25%;
+}
+
 /*# sourceMappingURL=main.css.map */

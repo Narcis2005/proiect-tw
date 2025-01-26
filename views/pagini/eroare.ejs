@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ro">
+<%- include('../fragmente/head') %>
+
+
+  <body>
+    <div class="main-container">
+      <%- include('../fragmente/header') %>
+      <main>
+        <div class="eroare-container">
+          <h1><%= titlu %></h1>
+          <p><%= text %></p>
+          <a href="/">Înapoi la pagina principală</a>
+          <img src="<%= imagine %>" alt="Imagine eroare">
+      </div>
+      </main>
+      <%- include('../fragmente/footer') %>
+
+    </div>
+    <a href="#" id="link-top" title="Scroll to top page"><div id="triunghi"></div></a>
+    <script src="resurse/js/meniu.js" defer></script>
+  </body>
+</html>

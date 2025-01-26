@@ -1,0 +1,28 @@
+{
+  "cale_baza": "/resurse/poze/",
+  "info_erori": [
+    {
+      "identificator": 403,
+      "titlu": "Acces interzis",
+      "text": "Nu aveți permisiunea de a accesa această resursă.",
+      "imagine": "403.webp"
+    },
+    {
+      "identificator": 404,
+      "titlu": "Pagină negăsită",
+      "text": "Pagina pe care o căutați nu există.",
+      "imagine": "404.jpg"
+    },
+    {
+      "identificator": 500,
+      "titlu": "Eroare internă a serverului",
+      "text": "A apărut o problemă neașteptată. Încercați din nou mai târziu.",
+      "imagine": "500.jpeg"
+    }
+  ],
+  "eroare_default": {
+    "titlu": "Eroare necunoscută",
+    "text": "A apărut o eroare neașteptată.",
+    "imagine": "default.png"
+  }
+}
