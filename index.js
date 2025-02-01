@@ -3,11 +3,10 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 const PORT = 8080;
+const sass = require('sass');
 
-// Variabilă globală pentru erori
 let obGlobal = { obErori: null };
 
-// Inițializare folder temporar
 const vect_foldere = ["temp"];
 vect_foldere.forEach((folder) => {
   const folderPath = path.join(__dirname, folder);
@@ -21,7 +20,6 @@ app.set("views", path.join(__dirname, "views"));
 console.log("Calea folderului (__dirname):", __dirname);
 console.log("Calea fișierului (__filename):", __filename);
 console.log("Folderul curent de lucru (process  wd()):", process.cwd());
-// Inițializare erori din JSON
 function initErori() {
   const eroriPath = path.join(__dirname, "erori.json");
   if (fs.existsSync(eroriPath)) {
@@ -34,7 +32,14 @@ function initErori() {
 }
 initErori();
 
-// Funcție pentru afișarea erorilor
+function getGalerie () {
+  const eroriPath = path.join(__dirname, "galerie.json");
+  if (fs.existsSync(eroriPath)) {
+    let imagini = fs.readFileSync(eroriPath);
+    imagini = JSON.parse(imagini);
+    return imagini;
+  }
+}
 function afisareEroare(res, identificator, titlu, text, imagine) {
   let eroare = obGlobal.obErori.info_erori.find((e) => e.identificator === identificator);
   if (!eroare) eroare = obGlobal.obErori.eroare_default;
@@ -46,17 +51,13 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
   });
 }
 
-// Middleware pentru resurse statice
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
 
-// Configurăm EJS ca motor de template-uri
 
-// Gestionare favicon
 app.get("/favicon.ico", (req, res) => {
   res.sendFile(path.join(__dirname, "resurse", "favicon.ico"));
 });
 
-// Interzicerea accesului la foldere fără fișier specificat
 app.get("/resurse/*", (req, res, next) => {
   if (req.path.endsWith("/")) {
     afisareEroare(res, 403);
@@ -68,12 +69,10 @@ app.use("/resurse", (req, res, next) => {
   afisareEroare(res, 404);
 });
 
-// Blocare acces fișiere .ejs
 app.get("/*.ejs", (req, res) => {
   afisareEroare(res, 400);
 });
 
-// Rute pentru pagini statice
 app.get("/", (req, res) => {
   res.render("pagini/index");
 });
@@ -81,8 +80,15 @@ app.get("/", (req, res) => {
 app.get("/despre", (req, res) => {
   res.render("pagini/despre");
 });
-
-// Rută generală pentru orice pagină
+app.get('/galerie', (req, res) => {
+  const galerieData = getGalerie();
+  const currentTime = new Date();
+  const minutes = currentTime.getMinutes();
+  // const sfertOra = Math.floor(minutes / 15) + 1;
+  const sfertOra = 3;
+  const imaginiFiltrate = galerieData.imagini.filter(img => img.sfert_ora == sfertOra).slice(0, 10);
+  res.render('pagini/galerie', { imagini: imaginiFiltrate, caleGalerie: galerieData.cale_galerie });
+});
 app.get("/*", (req, res) => {
   let pagina = req.params[0];
   res.render(`pagini/${pagina}`, function (eroare, rezultatRandare) {
@@ -98,6 +104,72 @@ app.get("/*", (req, res) => {
   });
 });
 
+global.__dirname = __dirname;
+global.folderScss = path.join(__dirname, 'resurse', 'stiluri', 'scss');
+global.folderCss = path.join(__dirname, 'resurse', 'stiluri','css');
+global.folderBackup = path.join(__dirname, 'backup');
+
+[global.folderScss, global.folderCss, global.folderBackup].forEach(folder => {
+    if (!fs.existsSync(folder)) {
+        fs.mkdirSync(folder, { recursive: true });
+    }
+});
+
+function compileazaScss(caleScss, caleCss) {
+    try {
+        if (!path.isAbsolute(caleScss)) {
+            caleScss = path.join(global.folderScss, caleScss);
+        }
+
+        if (!caleCss) {
+            const numeFisier = path.basename(caleScss, '.scss') + '.css';
+            caleCss = path.join(global.folderCss, numeFisier);
+        } else if (!path.isAbsolute(caleCss)) {
+            caleCss = path.join(global.folderCss, caleCss);
+        }
+
+        if (fs.existsSync(caleCss)) {
+            const numeFisierBackup = path.basename(caleCss);
+            const caleBackup = path.join(global.folderBackup, numeFisierBackup);
+
+            fs.copyFileSync(caleCss, caleBackup);
+            console.log(`Backup creat: ${caleBackup}`);
+        }
+
+        const rezultat = sass.compile(caleScss, {
+            style: 'compressed',
+        });
+        fs.writeFileSync(caleCss, rezultat.css);
+        console.log(`Fișier compilat: ${caleCss}`);
+    } catch (err) {
+        console.error(`Eroare la compilare: ${err.message}`);
+    }
+}
+
+function compileazaInitial() {
+    const fisiereScss = fs.readdirSync(global.folderScss).filter(fisier => fisier.endsWith('.scss'));
+
+    fisiereScss.forEach(fisier => {
+        const caleScss = path.join(global.folderScss, fisier);
+        compileazaScss(caleScss);
+    });
+}
+
+function monitorizeazaScss() {
+    fs.watch(global.folderScss, (eventType, fisier) => {
+        if (eventType === 'change' && path.extname(fisier) === '.scss') {
+            const caleScss = path.join(global.folderScss, fisier);
+            console.log(`Fișier modificat: ${caleScss}`);
+            compileazaScss(caleScss);
+        }
+    });
+
+    console.log(`Monitorizare activă pentru folderul: ${global.folderScss}`);
+}
+
+
+compileazaInitial();
+monitorizeazaScss(); 
 app.listen(PORT, () => {
   console.log(`Serverul rulează la http://localhost:${PORT}`);
 });

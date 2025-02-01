@@ -1,0 +1,65 @@
+{
+  "cale_galerie": "/resurse/poze/",
+  "imagini": [
+    {
+      "cale_imagine":"jack_si_vrejul_de_fasole.jpg",
+      "titlu":"Jack si vrejul de fasole",
+      "descriere":"Jack gaseste niste boabe magice de fasole si urca pe vrejul lor",
+      "sfert_ora":"3"
+      },
+    {
+      "cale_imagine":"cartea_cu_apolodor.jpg",
+      "titlu":"Carte cu apolodor",
+      "descriere":"Apolodor este un pinguin tenor din Labrador",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"aventurile_lui_habarnam.jpg",
+      "titlu":"Aventurile lui habarnam ",
+      "descriere":"Habarnam este un pitic care zboara cu balonul cu aer cald",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"pistolarul.jpeg",
+      "titlu":"Pistolarul",
+      "descriere":"Primul volum din seria Turnul Intunecat",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"alegerea_celor_trei.jpeg",
+      "titlu":"Alegerea celor trei",
+      "descriere":"Al doilea volum volum din seria Turnul Intunecat",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"tinuturile_pustii.jpeg",
+      "titlu":"Tinuturile pustii",
+      "descriere":"Al treilea volum volum din seria Turnul Intunecat",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"lupii_din_calla.jpg",
+      "titlu":"Lupii din Calla",
+      "descriere":"Al cincilea volum volum din seria Turnul Intunecat",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"cantecul_lui_susannah.jpg",
+      "titlu":"Cantecul lui Susannah",
+      "descriere":"Al saselea volum volum din seria Turnul Intunecat",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"turnul_intunecat.jpeg",
+      "titlu":"Turnul Intunecat",
+      "descriere":"Ultimul volum volum din seria Turnul Intunecat",
+      "sfert_ora":"3"
+    },
+    {
+      "cale_imagine":"regatul_umbrelor.jpeg",
+      "titlu":"Regatul umbrelor",
+      "descriere":"Primul volum din seria Grisha",
+      "sfert_ora":"3"
+    }
+  ]
+}
