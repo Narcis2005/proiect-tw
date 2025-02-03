@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 const PORT = 8080;
 const sass = require('sass');
-
+const {Pool} = require('pg')
 let obGlobal = { obErori: null };
 
 const vect_foldere = ["temp"];
@@ -51,6 +51,14 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
   });
 }
 
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'book_heaven',
+  password: 'postgres',
+  port: 5432,
+});
+
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
 
 
@@ -73,7 +81,7 @@ app.get("/*.ejs", (req, res) => {
   afisareEroare(res, 400);
 });
 
-app.get("/", (req, res) => {
+app.get(["/", "/home", "/index"], (req, res) => {
   res.render("pagini/index");
 });
 
@@ -88,6 +96,30 @@ app.get('/galerie', (req, res) => {
   const sfertOra = 3;
   const imaginiFiltrate = galerieData.imagini.filter(img => img.sfert_ora == sfertOra).slice(0, 10);
   res.render('pagini/galerie', { imagini: imaginiFiltrate, caleGalerie: galerieData.cale_galerie });
+});
+
+app.get('/carti', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, name, pret, imagine FROM carti');
+    res.render('pagini/carti', { carti: result.rows });
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Database error');
+  }
+});
+// Route: Single book details
+app.get('/carti/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pool.query('SELECT * FROM carti WHERE id = $1', [id]);
+    if (result.rows.length > 0) {
+      res.render('pagini/carte', { carte: result.rows[0] });
+    } else {
+      res.status(404).send('Cartea nu a fost gasita');
+    }
+  } catch (err) {
+    res.status(500).send('Database error');
+  }
 });
 app.get("/*", (req, res) => {
   let pagina = req.params[0];
