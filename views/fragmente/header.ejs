@@ -1,4 +1,5 @@
 <header>
+
   <h1>Book Heaven</h1>
   <nav class="main-nav">
     <ul class="menu">
@@ -24,6 +25,15 @@
       </li>
       <li>
         <a href="/despre" class="menu-link">Despre</a>
+      </li>
+      <li class="menu-item dropdown">
+        <a href="#" class="menu-link">Produse</a>
+        <ul class="submenu">
+          <li><a href="/carti">Toate</a></li>
+          <% categoriiCarti.forEach(categorie => { %>
+            <li><a href="/carti?categorie=<%= categorie %>"><%= categorie[0].toUpperCase() + categorie.slice(1) %></a></li>
+          <% }); %>
+        </ul>
       </li>
     </ul>
   </nav>

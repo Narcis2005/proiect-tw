@@ -58,7 +58,16 @@ const pool = new Pool({
   password: 'postgres',
   port: 5432,
 });
-
+app.use(async (req, res, next) => {
+  try {
+    const result = await pool.query("SELECT unnest(enum_range(NULL::categorie_carte)) AS categorie");
+    res.locals.categoriiCarti = result.rows.map(row => row.categorie);
+    next();
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
 
 
@@ -99,8 +108,18 @@ app.get('/galerie', (req, res) => {
 });
 
 app.get('/carti', async (req, res) => {
+
+  const categorie = req.query?.categorie;
   try {
-    const result = await pool.query('SELECT id, name, pret, imagine FROM carti');
+    let result;
+    if ( categorie) {
+       result = await pool.query('SELECT * FROM carti where categorie = $1', [categorie]);
+
+    }
+    else {
+      result = await pool.query('SELECT * FROM carti');
+      
+    }
     res.render('pagini/carti', { carti: result.rows });
   } catch (err) {
     console.log(err)

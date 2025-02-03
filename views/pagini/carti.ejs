@@ -10,13 +10,27 @@
       <h1>Lista carti</h1>
       <ul>
         <% carti.forEach(carte => { %>
-          <li>
-            <a href="/carti/<%= carte.id %>">
-              <img src="/resurse/poze/<%= carte.imagine %>" alt="<%= carte.nume %>" width="100">
-              <h2><%= carte.nume %></h2>
-              <p>Pret: <%= parseInt(carte.pret) %> de lei</p>
-            </a>
-          </li>
+          <article id="ar_ent_<%= carte.id %>" class="<%= carte.categorie.replace(/\s+/g, '') %>">
+            <h2><%= carte.name %></h2>
+            <div style="display: flex;">
+              <div style="flex: 1; padding: 10px;">
+                <p><strong>Categorie:</strong> <%= carte.categorie %></p>
+                <img src="/resurse/poze/<%= carte.imagine %>" alt="<%= carte.name %>" width="150" height="150">
+                <p><%= carte.description %></p>
+              </div>
+              <div style="flex: 1; padding: 10px;">
+                <p><strong style="color: darkblue;">Preț:</strong> <%= parseInt(carte.pret) %> RON</p>
+                <p><strong style="color: darkblue;">Tip copertă:</strong> <%= carte.tip_coperta %></p>
+                <p><strong style="color: darkblue;">Limba:</strong> <%= carte.limba %></p>
+                <p><strong style="color: darkblue;">Ilustrații:</strong> <%= carte.ilustratii ? 'Da' : 'Nu' %></p>
+                <p><strong style="color: darkblue;">Data publicării:</strong> 
+                  <time datetime="<%= carte.data.toISOString().split('T')[0] %>">
+                    <%= new Date(carte.data).toLocaleDateString('ro-RO', { day: '2-digit', month: 'long', year: 'numeric', weekday: 'long' }) %>
+                  </time>
+                </p>
+              </div>
+            </div>
+          </article>
         <% }) %>
       </ul>
     </main>
