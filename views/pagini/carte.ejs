@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+  <%- include('../fragmente/head') %>
+
+<body>
+  <%- include('../fragmente/header') %>
+
+    <main>
+      <h1><%= carte.name %></h1>
+      <img src="/resurse/poze/<%= carte.imagine %>" alt="<%= carte.name %>" width="200">
+      <p><%= carte.descriere %></p>
+      <p>Categorie: <%= carte.categorie %></p>
+      <p>Subcategorie: <%= carte.subcategorie %></p>
+      <p>Pret: <%= carte.pret %> de lei </p>
+      <p>Pagini: <%= carte.numar_pagini %></p>
+      <p>Publicata pe: <%= carte.data.toDateString() %></p>
+      <p>Tip coperta: <%= carte.tip_coperta %></p>
+      <p>Limbi: <%= carte.limba %></p>
+      <p>Are ilustratii: <%= carte.ilustratii ? 'Da' : 'Nu' %></p>
+    </main>
+    <%- include('../fragmente/footer') %>
+</body>
+</html>

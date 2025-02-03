@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+  <%- include('../fragmente/head') %>
+
+<body>
+  <%- include('../fragmente/header') %>
+
+    <main>
+      <h1>Lista carti</h1>
+      <ul>
+        <% carti.forEach(carte => { %>
+          <li>
+            <a href="/carti/<%= carte.id %>">
+              <img src="/resurse/poze/<%= carte.imagine %>" alt="<%= carte.nume %>" width="100">
+              <h2><%= carte.nume %></h2>
+              <p>Pret: <%= parseInt(carte.pret) %> de lei</p>
+            </a>
+          </li>
+        <% }) %>
+      </ul>
+    </main>
+    <%- include('../fragmente/footer') %>
+</body>
+</html>
